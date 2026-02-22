@@ -1,0 +1,37 @@
+{
+  "name": "webrunner-core",
+  "version": "0.1.0",
+  "description": "Plan→Execute→Verify web browsing substrate for agents",
+  "type": "module",
+  "main": "dist/core/index.js",
+  "types": "dist/core/index.d.ts",
+  "bin": {
+    "webrunner": "dist/cli/webrunner.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/cli/webrunner.ts",
+    "test": "vitest run",
+    "test:unit": "vitest run tests/unit/",
+    "test:e2e": "vitest run tests/e2e/",
+    "lint": "eslint src/ --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "bench": "tsx scripts/bench.ts"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "openai": "^4.77.0",
+    "pino": "^9.6.0",
+    "playwright": "^1.50.1",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.5.0",
+    "@types/node": "^22.13.4",
+    "@types/yargs": "^17.0.33",
+    "eslint": "^9.20.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}

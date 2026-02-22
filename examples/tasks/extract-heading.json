@@ -1,0 +1,18 @@
+{
+  "goal": "Extract the main heading from example.com",
+  "assumptions": ["No authentication required"],
+  "steps": [
+    { "id": "S1", "op": "navigate", "url": "https://example.com" },
+    { "id": "S2", "op": "waitFor", "kind": "networkIdle", "timeoutMs": 10000 },
+    { "id": "S3", "op": "extract", "out": "result/data.json" }
+  ],
+  "assertions": [
+    { "kind": "urlContains", "value": "example.com" },
+    { "kind": "textPresent", "value": "Example Domain" }
+  ],
+  "onFailure": {
+    "retry": { "maxAttempts": 1 },
+    "escalateIf": ["captchaDetected", "navigationFailed"]
+  },
+  "schemaVersion": "1.0"
+}

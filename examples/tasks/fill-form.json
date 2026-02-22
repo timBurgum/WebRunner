@@ -1,0 +1,18 @@
+{
+  "goal": "Fill the contact form at https://httpbin.org/forms/post and submit",
+  "assumptions": ["No authentication required"],
+  "steps": [
+    { "id": "S1", "op": "navigate", "url": "https://httpbin.org/forms/post" },
+    { "id": "S2", "op": "type", "ref": "E1", "text": "Alice Smith" },
+    { "id": "S3", "op": "type", "ref": "E2", "text": "test@example.com" },
+    { "id": "S4", "op": "click", "ref": "E10" }
+  ],
+  "assertions": [
+    { "kind": "urlContains", "value": "httpbin.org" }
+  ],
+  "onFailure": {
+    "retry": { "maxAttempts": 1 },
+    "escalateIf": ["captchaDetected"]
+  },
+  "schemaVersion": "1.0"
+}
